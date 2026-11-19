@@ -1,5 +1,1 @@
-[
-  { "name": "1-cover.jpg", "query": "?shot=cover&photo=pier&caption=Sunset%20Heist", "w": 1080, "h": 1080 },
-  { "name": "2-editor.jpg", "query": "?shot=editor&photo=boulevard&caption=Boulevard%20Queen", "w": 1280, "h": 720 },
-  { "name": "3-cover.jpg", "query": "?shot=cover&photo=boulevard&caption=Boulevard%20Queen", "w": 1080, "h": 1080 }
-]
+[{"h":720,"name":"1-cover-wide.jpg","query":"?shot=cover&layout=hero&grade=vice&lettering=sunset&size=wide&title=NEON%20SHORE&subtitle=one%20summer%2C%20no%20rules","w":1280},{"h":800,"name":"2-editor.jpg","query":"?shot=editor&layout=classic&grade=neon&lettering=neon&size=square&title=MIDNIGHT%20DRIVE&subtitle=the%20city%20never%20sleeps","w":1280},{"h":1024,"name":"3-cover-square.jpg","query":"?shot=cover&layout=classic&grade=golden&lettering=block&size=square&title=BOULEVARD%20QUEEN&subtitle=golden%20hour%20royalty","w":1024},{"h":1024,"name":"4-cover-portrait.jpg","query":"?shot=cover&layout=grid9&grade=teal&lettering=outline&size=portrait&title=PIER%20PRESSURE&subtitle=salt%2C%20sun%20and%20second%20chances","w":819}]

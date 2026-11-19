@@ -3,20 +3,82 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cover Snap</title>
+<title>Neon Vice Cover Studio</title>
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<main class="app">
-  <section class="controls">
-    <h1>Cover Snap</h1>
-    <p>A photo and a caption, made into a square cover.</p>
-    <label>Photo <input id="photo" type="file" accept="image/*"></label>
-    <label>Caption <input id="caption" type="text" maxlength="40" value="Sunset Heist"></label>
-    <button id="export" type="button">Export PNG 1080 x 1080</button>
-    <p id="status" role="status"></p>
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">NV</span><div><strong>Neon Vice Cover Studio</strong><small>Your photo. Your city. Your cover.</small></div></div>
+  <div class="top-actions">
+    <button id="undoBtn" type="button" title="Undo">Undo</button>
+    <button id="redoBtn" type="button" title="Redo">Redo</button>
+    <button id="randomBtn" type="button">Surprise me</button>
+  </div>
+</header>
+<main class="studio">
+  <aside class="panel controls" aria-label="Cover controls">
+    <section>
+      <h2>1 · Photos</h2>
+      <div id="dropZone" class="dropzone" tabindex="0">
+        <p><strong>Drop photos here</strong><br>or click to browse — they never leave this machine.</p>
+        <input id="photoInput" type="file" accept="image/*" multiple hidden>
+      </div>
+      <div class="row">
+        <button id="sampleA" type="button">Sample: Boulevard</button>
+        <button id="sampleB" type="button">Sample: Pier</button>
+      </div>
+      <div id="thumbStrip" class="thumbs" aria-label="Loaded photos"></div>
+      <p class="hint">Click a panel on the cover, then click a photo to place it. Drag a panel to reposition, scroll on it to zoom.</p>
+    </section>
+    <section>
+      <h2>2 · Layout</h2>
+      <div id="layoutGrid" class="chip-grid"></div>
+      <label class="field">Panel gap <input id="gapRange" type="range" min="0" max="28" value="10"><span id="gapVal">10</span></label>
+      <label class="field">Corner roundness <input id="radiusRange" type="range" min="0" max="40" value="6"><span id="radiusVal">6</span></label>
+    </section>
+    <section>
+      <h2>3 · Colour grade</h2>
+      <div id="gradeGrid" class="chip-grid"></div>
+      <label class="field">Grade strength <input id="gradeRange" type="range" min="0" max="100" value="70"><span id="gradeVal">70</span></label>
+      <label class="check"><input id="grainToggle" type="checkbox" checked> Film grain</label>
+      <label class="check"><input id="vignetteToggle" type="checkbox" checked> Vignette</label>
+      <label class="check"><input id="halftoneToggle" type="checkbox"> Halftone dots</label>
+    </section>
+    <section>
+      <h2>4 · Lettering</h2>
+      <label class="field col">Title <input id="titleInput" type="text" maxlength="28" value="NEON SHORE"></label>
+      <label class="field col">Subtitle <input id="subtitleInput" type="text" maxlength="40" value="one summer, no rules"></label>
+      <div id="letterGrid" class="chip-grid"></div>
+      <label class="field">Title size <input id="titleSize" type="range" min="50" max="150" value="100"><span id="titleSizeVal">100</span></label>
+      <label class="field">Title position <input id="titlePos" type="range" min="0" max="100" value="82"><span id="titlePosVal">82</span></label>
+      <label class="check"><input id="badgeToggle" type="checkbox" checked> Star badge</label>
+      <label class="check"><input id="palmsToggle" type="checkbox" checked> Palm silhouettes</label>
+      <label class="check"><input id="sunToggle" type="checkbox" checked> Sunset disc</label>
+    </section>
+    <section>
+      <h2>Selected panel</h2>
+      <p id="selectedLabel" class="hint">Panel 1 selected</p>
+      <label class="field">Zoom <input id="zoomRange" type="range" min="100" max="300" value="100"><span id="zoomVal">100</span></label>
+      <div class="row">
+        <button id="flipBtn" type="button">Flip panel</button>
+        <button id="fillAllBtn" type="button">Use photo everywhere</button>
+      </div>
+    </section>
+  </aside>
+  <section class="stage" aria-label="Cover preview">
+    <div class="stage-head">
+      <div id="sizeTabs" class="size-tabs" role="tablist"></div>
+      <p id="statusLine" role="status">Ready — add a photo to begin.</p>
+    </div>
+    <div class="canvas-wrap"><canvas id="coverCanvas" width="1080" height="1080" aria-label="Live cover preview"></canvas></div>
+    <div class="export-bar">
+      <button id="exportSquare" type="button">PNG 1080 × 1080</button>
+      <button id="exportPortrait" type="button">PNG 1080 × 1350</button>
+      <button id="exportWide" type="button">PNG 1920 × 1080</button>
+      <button id="exportAll" type="button" class="primary">Export all three</button>
+    </div>
+    <p class="hint center">Everything runs offline in this page. No upload, no watermark, no account. Multi-panel covers with sunset and neon grades, bold original lettering, exported as PNG.</p>
   </section>
-  <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
 </main>
 <script type="module" src="./src/main.js"></script>
 </body>
